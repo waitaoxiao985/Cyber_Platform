@@ -5,6 +5,12 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    turbopack: false,
+  },
+  outputFileTracingIncludes: {
+    "**/*.prisma": [
+      "node_modules/.prisma/client/**/*",
+    ],
   },
 }
 
