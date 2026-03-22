@@ -16,29 +16,10 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
-      }, speed);
-      
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, text, speed]);
-  
-  const [isClient, setIsClient] = useState(false);
-  
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-  
+  // 简单直接显示文本，不使用动画效果
   return (
     <span className={className}>
-      {displayText}
-      {isClient && currentIndex < text.length && (
-        <span className="animate-pulse">|</span>
-      )}
+      {text}
     </span>
   );
 };

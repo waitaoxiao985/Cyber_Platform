@@ -7,12 +7,7 @@ import { useState, useEffect } from 'react'
 
 function NavbarContent() {
   const { data: session, status } = useSession()
-  const [isClient, setIsClient] = useState(false)
   const user = session?.user
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   return (
     <nav className="border-b border-gray-800 bg-black/80 backdrop-blur-sm">
@@ -39,24 +34,23 @@ function NavbarContent() {
               管理
             </Link>
           )}
-          {isClient && (
-            user ? (
+          {user ? (
+            <Button
+              variant="outline"
+              onClick={() => signOut()}
+              className="border-neon-purple text-neon-purple hover:bg-neon-purple/10"
+            >
+              退出
+            </Button>
+          ) : (
+            <Link href="/auth/signin">
               <Button
                 variant="outline"
-                onClick={() => signOut()}
-                className="border-neon-purple text-neon-purple hover:bg-neon-purple/10"
-              >
-                退出
-              </Button>
-            ) : (
-              <Button
-                variant="outline"
-                onClick={() => signIn('credentials')}
-                className="border-neon-purple text-neon-purple hover:bg-neon-purple/10"
+                className="border-neon-purple text-neon-purple hover:bg-neon-pink/10"
               >
                 登录 / 注册
               </Button>
-            )
+            </Link>
           )}
         </div>
       </div>
