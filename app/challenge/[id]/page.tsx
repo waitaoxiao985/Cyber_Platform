@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge'
 import ChallengeForm from '@/components/ChallengeForm'
 
 export default async function ChallengePage({ params }: { params: { id: string } }) {
-  const challenge = await getChallengeById((await params).id)
+  const challenge = await getChallengeById(params.id)
   const session = await getServerSession(authOptions)
   const user = session?.user
 
