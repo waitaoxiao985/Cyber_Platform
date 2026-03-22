@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 13% 9%;
+  --foreground: 0 0% 95%;
+  --card: 220 13% 11%;
+  --card-foreground: 0 0% 95%;
+  --popover: 220 13% 9%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 280 60% 60%;
+  --primary-foreground: 220 13% 9%;
+  --secondary: 220 13% 15%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 220 13% 15%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 280 60% 60%;
+  --accent-foreground: 220 13% 9%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 95%;
+  --border: 220 13% 19%;
+  --input: 220 13% 19%;
+  --ring: 280 60% 60%;
+  --radius: 0.5rem;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: 'Inter', sans-serif;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent));
+}
+
+/* 霓虹效果 */
+.neon-text {
+  text-shadow: 0 0 5px #9d4edd, 0 0 10px #9d4edd, 0 0 15px #9d4edd;
+}
+
+.neon-border {
+  box-shadow: 0 0 5px #9d4edd, 0 0 10px #9d4edd, 0 0 15px #9d4edd;
+}
+
+/* 霓虹灯呼吸效果 */
+.animate-neon-pulse {
+  animation: neon-pulse 2s infinite alternate;
+}
+
+@keyframes neon-pulse {
+  0% {
+    text-shadow: 0 0 5px #9d4edd, 0 0 10px #9d4edd, 0 0 15px #9d4edd;
+  }
+  100% {
+    text-shadow: 0 0 10px #9d4edd, 0 0 20px #9d4edd, 0 0 30px #9d4edd, 0 0 40px #9d4edd;
+  }
+}
+
+/* 扫描线效果 */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.03) 2px,
+    rgba(0, 255, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+  z-index: 10;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* 故障效果 */
+.animate-glitch {
+  animation: glitch 15s infinite;
+}
+
+@keyframes glitch {
+  0%, 99.9% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-2px, 2px);
+    text-shadow: -2px 2px 0 rgba(255, 0, 0, 0.5);
+  }
+}
+
+/* 自定义颜色类 */
+.text-neon-purple {
+  color: #a855f7;
+  text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7;
+}
+
+.text-neon-cyan {
+  color: #06b6d4;
+  text-shadow: 0 0 5px #06b6d4, 0 0 10px #06b6d4;
+}
+
+.text-neon-pink {
+  color: #ec4899;
+  text-shadow: 0 0 5px #ec4899, 0 0 10px #ec4899;
+}
+
+.bg-neon-purple {
+  background-color: #a855f7;
+  box-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7;
+}
+
+.bg-neon-pink {
+  background-color: #ec4899;
+  box-shadow: 0 0 10px #ec4899, 0 0 20px #ec4899;
+}
+
+.border-neon-cyan {
+  border-color: #06b6d4;
+  box-shadow: 0 0 10px #06b6d4, 0 0 20px #06b6d4;
+}
