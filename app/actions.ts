@@ -111,11 +111,16 @@ export async function getChallenges() {
 }
 
 export async function getChallengeById(id: string) {
-  const challenge = await prisma.challenge.findUnique({
-    where: { id },
-  })
+  try {
+    const challenge = await prisma.challenge.findUnique({
+      where: { id },
+    })
 
-  return challenge
+    return challenge
+  } catch (error) {
+    console.error('Error fetching challenge by id:', error)
+    throw error
+  }
 }
 
 export async function getUserSolvedChallenges(userId: string) {
