@@ -1,6 +1,6 @@
 # CTF 竞赛平台
 
-一个轻量级的 CTF 竞赛平台框架，基于 Next.js 16 (App Router) + TypeScript + Tailwind CSS + shadcn/ui + Prisma + SQLite + NextAuth。
+一个轻量级的 CTF 竞赛平台框架，基于 Next.js 16 (App Router) + TypeScript + Tailwind CSS + shadcn/ui + Prisma + PostgreSQL + NextAuth。
 
 ## 功能特性
 
@@ -16,7 +16,7 @@
 
 - **前端**：Next.js 16 (App Router)、TypeScript、Tailwind CSS、shadcn/ui
 - **后端**：Next.js Server Actions、NextAuth v5
-- **数据库**：Prisma + SQLite
+- **数据库**：Prisma + PostgreSQL (Neon)
 
 ## 安装和运行
 
@@ -39,7 +39,11 @@ npm install
 
 ```bash
 cp .env.example .env
-# 编辑 .env 文件，设置 NEXTAUTH_SECRET
+# 编辑 .env 文件，设置以下环境变量：
+# - DATABASE_URL: PostgreSQL 数据库的池化连接 URL
+# - DATABASE_URL_UNPOOLED: PostgreSQL 数据库的非池化连接 URL
+# - NEXTAUTH_SECRET: 生成一个随机字符串作为密钥
+# - NEXTAUTH_URL: 本地开发地址，如 http://localhost:3000
 ```
 
 ### 4. 初始化数据库
@@ -65,7 +69,8 @@ npm run dev
 1. 在 Vercel 上创建一个新的项目
 2. 连接你的代码仓库
 3. 在环境变量设置中添加：
-   - `DATABASE_URL`: 可以使用 Vercel Postgres 或其他 SQLite 兼容的数据库
+   - `DATABASE_URL`: Neon PostgreSQL 数据库的池化连接 URL
+   - `DATABASE_URL_UNPOOLED`: Neon PostgreSQL 数据库的非池化连接 URL
    - `NEXTAUTH_SECRET`: 生成一个随机字符串作为密钥
    - `NEXTAUTH_URL`: 你的 Vercel 项目 URL
 4. 部署项目
